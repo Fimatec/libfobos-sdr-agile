@@ -717,11 +717,8 @@ int fobos_sdr_set_lna_gain(struct fobos_sdr_dev_t * dev, unsigned int value)
         return result;
     }
     if (value > 3) value = 3;
-    if (value != dev->rx_lna_gain)
-    {
-        fobos_sdr_fx3_cmd(dev, FOBOS_SDR_CMD, CMD_SET_LNA, value);
-        dev->rx_lna_gain = value;
-    }
+    fobos_sdr_fx3_cmd(dev, FOBOS_SDR_CMD, CMD_SET_LNA, value);
+    dev->rx_lna_gain = value;
     return result;
 }
 //==============================================================================
@@ -737,11 +734,8 @@ int fobos_sdr_set_vga_gain(struct fobos_sdr_dev_t * dev, unsigned int value)
     }
     result = 0;
     if (value > 31) value = 31;
-    if (value != dev->rx_vga_gain)
-    {
-        fobos_sdr_fx3_cmd(dev, FOBOS_SDR_CMD, CMD_SET_VGA, value);
-        dev->rx_vga_gain = value;
-    }
+    fobos_sdr_fx3_cmd(dev, FOBOS_SDR_CMD, CMD_SET_VGA, value);
+    dev->rx_vga_gain = value;
     return result;
 }
 //==============================================================================
