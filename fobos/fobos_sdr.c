@@ -1259,8 +1259,11 @@ int fobos_sdr_read_async(struct fobos_sdr_dev_t * dev, fobos_sdr_cb_t cb, void *
         }
     }
 
-    dev->rx_async_status = FOBOS_RUNNING;
-    printf_internal("FOBOS_RUNNING...\n");
+    if (dev->rx_async_status != FOBOS_CANCELING)
+    {
+        dev->rx_async_status = FOBOS_RUNNING;
+        printf_internal("FOBOS_RUNNING...\n");
+    }
     enum fobos_async_status status = FOBOS_IDDLE;
     while (FOBOS_IDDLE != dev->rx_async_status)
     {
