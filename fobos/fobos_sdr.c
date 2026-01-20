@@ -618,11 +618,8 @@ int fobos_sdr_set_frequency(struct fobos_sdr_dev_t * dev, double value)
     {
         return result;
     }
-    if (dev->rx_frequency != value)
-    {
-        uint64_t freq = (uint64_t)value;
-        fobos_sdr_ctrl_out(dev, FOBOS_SDR_CMD, CMD_SET_FREQ, 0, (uint8_t*)&freq, 8);
-    }
+    uint64_t freq = (uint64_t)value;
+    fobos_sdr_ctrl_out(dev, FOBOS_SDR_CMD, CMD_SET_FREQ, 0, (uint8_t*)&freq, 8);
     return result;
 }
 //==============================================================================
